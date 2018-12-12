@@ -32,13 +32,4 @@ var Word = function (newWord) {
     };
 };
 
-// var newWord = new Word("tubt");
-// console.log(newWord.display());
-// newWord.guess("t");
-// console.log(newWord.display());
-// newWord.guess("n");
-// console.log(newWord.display());
-// newWord.guess("b");
-// console.log(newWord.display());
-
 module.exports = Word;
