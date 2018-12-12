@@ -3,11 +3,11 @@ const chalk = require('chalk');
 const log = console.log;
 var Word = require("./word");
 
-var randomWord = getNewWordRandomly();
-var count = randomWord.length * 2;
-var newWord = new Word(randomWord);
-log("Music Instrument\n" + newWord.display());
+var randomWord = "";
+var count = 0;
+var newWord = {};
 
+createNewWordRandomly();
 guessWord();
 
 function guessWord() {
@@ -31,10 +31,7 @@ function guessWord() {
         if (newWord.display().split(" ").join("").trim() === randomWord.split(" ").join("").trim()) {
             log("You got it right! Next Word!\n");
 
-            randomWord = getNewWordRandomly();
-            count = randomWord.length * 2;
-            newWord = new Word(randomWord);
-            log("Music Instrument\n" + newWord.display());
+            createNewWordRandomly();
             guessWord();
         } else {
             if (count > 0) {
@@ -50,10 +47,7 @@ function guessWord() {
                     }
                 ]).then(function (response) {
                     if (response.playAgain) {
-                        randomWord = getNewWordRandomly();
-                        count = randomWord.length * 2;
-                        newWord = new Word(randomWord);
-                        log("Music Instrument\n" + newWord.display());
+                        createNewWordRandomly();
                         guessWord();
                     }
                 });
@@ -62,7 +56,7 @@ function guessWord() {
     });
 };
 
-function getNewWordRandomly() {
+function createNewWordRandomly() {
     var wordArr = [
         "piano",
         "flute",
@@ -81,5 +75,8 @@ function getNewWordRandomly() {
         "tambourine"
     ];
 
-    return wordArr[Math.floor(Math.random() * wordArr.length)];
+    randomWord = wordArr[Math.floor(Math.random() * wordArr.length)];
+    count = randomWord.length * 2;
+    newWord = new Word(randomWord);
+    log("Music Instrument\n" + newWord.display());
 };
