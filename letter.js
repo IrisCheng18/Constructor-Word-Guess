@@ -19,7 +19,4 @@ var Letter = function (char) {
     };
 };
 
-// var newLetter = new Letter("a");
-// console.log(newLetter);
-
 module.exports = Letter;
